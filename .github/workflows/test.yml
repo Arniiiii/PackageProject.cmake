@@ -29,6 +29,19 @@ jobs:
         with:
           cmake-version: 3.18.4
 
+      - name: install PackageProject.cmake and test it
+        run: |
+          cmake -S . -B build/install -DPackageProject.cmake_INSTALL=ON
+          cmake --install build/install --prefix ./install_dir
+          CMAKE_PREFIX_PATH=./install_dir cmake -S test -B build/test_installed_prefix -DTEST_INSTALLED_VERSION_PACKAGEPROJECT=ON
+          cmake --build build/test_installed_prefix
+          cmake --build build/test_installed_prefix --target test 
+          sudo cmake --install build/install
+          cmake -S test -B build/test_installed -DTEST_INSTALLED_VERSION_PACKAGEPROJECT=ON
+          cmake --build build/test_installed
+          cmake --build build/test_installed --target test
+          sudo cmake --install build/test_installed
+
       - name: test and install local build
         run: |
           cmake -S test -B build/local

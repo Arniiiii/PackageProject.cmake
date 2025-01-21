@@ -14,7 +14,11 @@ target_include_directories(
                     $<INSTALL_INTERFACE:include/${PROJECT_NAME}-${PROJECT_VERSION}>
 )
 
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/../.. PackageProject)
+if(${TEST_INSTALLED_VERSION_PACKAGEPROJECT})
+  find_package(PackageProject.cmake)
+else()
+  add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/../.. PackageProject)
+endif()
 
 packageProject(
   NAME ${PROJECT_NAME}

@@ -4,3 +4,4 @@
 /.cache
 /compile_commands.json
 /install_dir
+/cmake/PackageProject.cmake/PackageProject.cmakeConfig.cmake

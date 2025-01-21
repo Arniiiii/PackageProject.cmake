@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 3.14...3.22)
 
 option(TEST_INSTALLED_VERSION "Test the version found by find_package" OFF)
 
+option(TEST_INSTALLED_VERSION_PACKAGEPROJECT
+       "Test the version of PackageProject.cmake found via `include(PackageProject)`" OFF
+)
+
 project(
   PackageProjectTest
   VERSION 1.0
