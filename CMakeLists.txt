@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-set(PackageProject.cmake_VERSION 13.0.0)
+set(PackageProject.cmake_VERSION 13.0.2)
 
 option(${PROJECT_NAME}_INSTALL "Install the script for local system?" NO)
 
