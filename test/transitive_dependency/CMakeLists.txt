@@ -20,7 +20,7 @@ CPMAddPackage(
   NAME cxxopts
   GITHUB_REPOSITORY jarro2783/cxxopts
   VERSION 3.0.0
-  OPTIONS "CXXOPTS_BUILD_EXAMPLES Off" "CXXOPTS_BUILD_TESTS Off"
+  OPTIONS "CXXOPTS_BUILD_EXAMPLES Off" "CXXOPTS_BUILD_TESTS Off" "CXXOPTS_ENABLE_INSTALL 1"
 )
 
 # Set default visibility to hidden for all targets
