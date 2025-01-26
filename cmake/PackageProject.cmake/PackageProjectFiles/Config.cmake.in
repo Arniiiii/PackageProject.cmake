@@ -1,10 +1,10 @@
 include(CMakeFindDependencyMacro)
 
-string(REGEX MATCHALL "[^;]+" SEPARATE_DEPENDENCIES "@PACKAGEPROJECT_DEPENDENCIES@")
+string(REGEX MATCHALL "[^;]+" SEPARATE_DEPENDENCIES "@PACKAGEPROJECTLOCALVAR_DEPENDENCIES@")
 
 foreach(dependency ${SEPARATE_DEPENDENCIES})
   string(REPLACE " " ";" args "${dependency}")
   find_dependency(${args})
 endforeach()
 
-include("${CMAKE_CURRENT_LIST_DIR}/@PACKAGEPROJECT_NAME@Targets.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/@PACKAGEPROJECTLOCALVAR_NAME@Targets.cmake")
