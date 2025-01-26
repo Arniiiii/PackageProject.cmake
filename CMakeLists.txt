@@ -23,7 +23,11 @@ configure_package_config_file(
   INSTALL_DESTINATION ${CMAKE_INSTALL_DATADIR}/cmake/PackageProject.cmake
 )
 
-write_basic_package_version_file(${CMAKE_CURRENT_LIST_DIR}/cmake/PackageProject.cmake/PackageProject.cmakeConfigVersion.cmake VERSION ${PackageProject.cmake_VERSION} COMPATIBILITY AnyNewerVersion ARCH_INDEPENDENT)
+write_basic_package_version_file(
+  ${CMAKE_CURRENT_LIST_DIR}/cmake/PackageProject.cmake/PackageProject.cmakeConfigVersion.cmake
+  VERSION ${PackageProject.cmake_VERSION}
+  COMPATIBILITY AnyNewerVersion ARCH_INDEPENDENT
+)
 
 if(${PackageProject.cmake_INSTALL})
 
@@ -40,7 +44,8 @@ if(${PackageProject.cmake_INSTALL})
   )
 
   install(
-    FILES "${CMAKE_CURRENT_LIST_DIR}/cmake/PackageProject.cmake/PackageProject.cmakeConfigVersion.cmake"
+    FILES
+      "${CMAKE_CURRENT_LIST_DIR}/cmake/PackageProject.cmake/PackageProject.cmakeConfigVersion.cmake"
     DESTINATION "${CMAKEDIR}"
   )
   if("${PACKAGE_PROJECT_ROOT_PATH_DEFAULT_VALUE}" STREQUAL "${PACKAGE_PROJECT_ROOT_PATH}")
