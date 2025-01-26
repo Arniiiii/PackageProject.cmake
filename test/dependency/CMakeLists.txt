@@ -15,7 +15,7 @@ target_include_directories(
 )
 
 if(${TEST_INSTALLED_VERSION_PACKAGEPROJECT})
-  find_package(PackageProject.cmake)
+  find_package(PackageProject.cmake 13.0.3)
 else()
   add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/../.. PackageProject)
 endif()

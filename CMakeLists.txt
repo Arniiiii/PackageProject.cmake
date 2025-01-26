@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(PackageProject.cmake VERSION 13.0.3)
+project(PackageProject.cmake VERSION 13.0.4)
 
 option(${PROJECT_NAME}_INSTALL "Install the script for local system?" NO)
 
@@ -13,13 +13,19 @@ set(PACKAGE_PROJECT_ROOT_PATH
       "The path to the PackageProject directory in which will be Config.cmake.in and version.h.in"
 )
 
-configure_file(
+include(CMakePackageConfigHelpers)
+
+include(GNUInstallDirs)
+
+configure_package_config_file(
   ${CMAKE_CURRENT_LIST_DIR}/cmake/PackageProject.cmake/PackageProject.cmakeConfig.cmake.in
-  ${CMAKE_CURRENT_LIST_DIR}/cmake/PackageProject.cmake/PackageProject.cmakeConfig.cmake @ONLY
+  ${CMAKE_CURRENT_LIST_DIR}/cmake/PackageProject.cmake/PackageProject.cmakeConfig.cmake
+  INSTALL_DESTINATION ${CMAKE_INSTALL_DATADIR}/cmake/PackageProject.cmake
 )
 
+write_basic_package_version_file(${CMAKE_CURRENT_LIST_DIR}/cmake/PackageProject.cmake/PackageProject.cmakeConfigVersion.cmake VERSION ${PackageProject.cmake_VERSION} COMPATIBILITY AnyNewerVersion ARCH_INDEPENDENT)
+
 if(${PackageProject.cmake_INSTALL})
-  include(GNUInstallDirs)
 
   set(CMAKEDIR
       ${CMAKE_INSTALL_DATADIR}/cmake/PackageProject.cmake/
@@ -30,6 +36,11 @@ if(${PackageProject.cmake_INSTALL})
 
   install(
     FILES "${CMAKE_CURRENT_LIST_DIR}/cmake/PackageProject.cmake/PackageProject.cmakeConfig.cmake"
+    DESTINATION "${CMAKEDIR}"
+  )
+
+  install(
+    FILES "${CMAKE_CURRENT_LIST_DIR}/cmake/PackageProject.cmake/PackageProject.cmakeConfigVersion.cmake"
     DESTINATION "${CMAKEDIR}"
   )
   if("${PACKAGE_PROJECT_ROOT_PATH_DEFAULT_VALUE}" STREQUAL "${PACKAGE_PROJECT_ROOT_PATH}")

@@ -1,9 +1,11 @@
-# project(PackageProject.cmake VERSION @PackageProject.cmake_VERSION@)
+set(PackageProject.cmake_VERSION @PackageProject.cmake_VERSION@)
 
 set(PACKAGE_PROJECT_ROOT_PATH
     "@PACKAGE_PROJECT_ROOT_PATH@"
     CACHE INTERNAL "The path to the PackageProject directory"
 )
+
+@PACKAGE_INIT@
 
 function(packageProject)
   include(CMakePackageConfigHelpers)
